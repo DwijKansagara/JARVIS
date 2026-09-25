@@ -4,6 +4,8 @@ Python desktop voice assistant adapted from [MARK XXXIX-OR by FatihMakes](https:
 
 ## Run locally
 
+**Start here: [Complete step-by-step Windows setup guide](docs/RUN_LOCALLY.md).** It covers installing Python and Git, downloading JARVIS, dependencies, API keys, microphone settings, first launch, checks, FFmpeg, updates, and troubleshooting.
+
 Use **Python 3.11 or 3.12** on Windows, with a microphone and speakers. Windows is the tested platform. Some modules support macOS/Linux, but those platforms have not been validated; game updates are Windows-only.
 
 ```powershell
