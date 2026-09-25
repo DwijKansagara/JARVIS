@@ -12,6 +12,10 @@ let readAloud = false;
 let recognition = null;
 let listening = false;
 
+function isIdentityQuestion(text) {
+  return /\b(who|what)\s+(created|made|built|developed)\s+(you|jarvis)|who\s+(is|owns)\s+(your|the)\s+(creator|owner)|who\s+owns\s+(you|jarvis)|who\s+is\s+your\s+(creator|owner)/i.test(text);
+}
+
 function notify(text = '') {
   $('notice').textContent = text;
   $('notice').hidden = !text;
@@ -86,6 +90,15 @@ async function sendMessage(event) {
   notify();
   $('prompt').value = '';
   addMessage('user', text);
+  if (isIdentityQuestion(text)) {
+    const identity = 'I am JARVIS, created and owned by Dwij Kansagara.';
+    history.push({ role: 'user', content: text }, { role: 'assistant', content: identity });
+    const message = addMessage('assistant', identity);
+    addCopy(message, identity);
+    say(identity);
+    $('prompt').focus();
+    return;
+  }
   const message = addMessage('assistant', 'Working through it…', true);
   const controller = new AbortController();
   request = controller;

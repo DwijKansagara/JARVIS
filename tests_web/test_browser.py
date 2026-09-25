@@ -91,6 +91,12 @@ class WebTests(unittest.TestCase):
     def test_identity_instruction_names_creator_and_owner(self):
         self.connect()
         self.send("Who created you and who owns you?")
+        expect(self.page.locator(".assistant .message-content")).to_have_text("I am JARVIS, created and owned by Dwij Kansagara.")
+        self.assertEqual(self.requests, [])
+
+    def test_identity_instruction_is_present_for_other_prompts(self):
+        self.connect()
+        self.send("Tell me about yourself")
         request = self.requests[0]
         system = request["messages"][0]["content"]
         self.assertIn("created and owned by Dwij Kansagara", system)
