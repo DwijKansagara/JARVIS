@@ -1,0 +1,2 @@
+# Compatibility alias: one authoritative dependency list.
+-r requirements.txt

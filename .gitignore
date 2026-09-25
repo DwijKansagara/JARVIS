@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+config/api_keys.json
+memory/long_term.json
+tmp/
+*.log
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
