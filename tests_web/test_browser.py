@@ -106,6 +106,11 @@ class WebTests(unittest.TestCase):
         expect(self.page.locator(".assistant .message-content")).to_have_text("I am JARVIS, created and owned by Dwij Kansagara.")
         self.assertEqual(self.requests, [])
 
+    def test_assets_are_versioned_for_browser_cache_refresh(self):
+        html = self.page.content()
+        self.assertIn("app.js?v=20260925-3", html)
+        self.assertIn("style.css?v=20260925-3", html)
+
     def test_identity_instruction_is_present_for_other_prompts(self):
         self.connect()
         self.send("Tell me about yourself")
