@@ -11,13 +11,13 @@ The web app lives in `web/`; the desktop app still starts with `main.py`. Both a
 5. Use the microphone button to dictate in a supported browser. Allow microphone access, review the text, and send it. Dictation does not automatically send messages.
 6. Enable **Read aloud** to hear replies. The first 3,500 characters are read for long replies. Toggle it off to stop speech.
 7. Use **Stop** to cancel a pending reply, **Copy** to copy a response, and **New conversation** to clear the current chat.
-8. Use **Disconnect** to clear the key. Reloading or closing the tab also clears it.
+8. Leave **Remember on this device** checked to keep the key for future visits on this browser. Use **Disconnect** to erase the saved key. **New conversation** clears the saved conversation history; reloading keeps it.
 
 The app uses free conversational OpenRouter models with provider-side fallback. Availability and account limits still apply. A connection badge means a key was entered; sending a message verifies whether the provider accepts it.
 
 ## Privacy and capabilities
 
-- Keys and history remain in this tab's memory. This app does not put them in browser storage, cookies, the repository, or Antideploy's environment.
+- When **Remember on this device** is enabled, the key and history are stored in this browser's local storage on this device. They are not sent to this repository or stored in Antideploy's environment. Turn it off on a shared computer; use **Disconnect** to erase the saved key.
 - Chat requests go directly to OpenRouter and its selected model provider. Their data-handling policies apply. Browser dictation may use the browser vendor's speech service.
 - Context is bounded to the latest 20 messages and approximately 60,000 characters. Older messages remain visible until you clear the conversation or reload.
 - Web features include conversation, planning, learning, writing, and coding help. The web app cannot search the web, open local files, run commands, or control your desktop.
@@ -43,7 +43,7 @@ The desktop environment already includes Playwright:
 .\.venv\Scripts\python.exe -m unittest discover -s tests_web -v
 ```
 
-Eight browser tests cover setup, session-only keys, chat context, safe rendering, cancellation, authentication failures, rate limits, retries, mobile layout, and voice controls. Provider and speech responses are mocked. GitHub Actions runs these separately from the nine desktop checks. A real browser-to-OpenRouter chat and a Gemini Live audio response were also verified during implementation. Physical microphone input and audible playback were not tested.
+Eleven browser tests cover setup, remembered keys, persisted history, chat context, safe rendering, cancellation, authentication failures, rate limits, retries, mobile layout, and voice controls. Provider and speech responses are mocked. GitHub Actions runs these separately from the ten desktop checks. A real browser-to-OpenRouter chat and a Gemini Live audio response were also verified during implementation. Physical microphone input and audible playback were not tested.
 
 ## Deploy on Antideploy
 

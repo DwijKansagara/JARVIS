@@ -52,11 +52,12 @@
     <form id="settings-form">
       <div class="dialog-heading"><span class="eyebrow">YOUR CONNECTION</span><button id="close-settings" type="button" class="icon-button" aria-label="Close settings">×</button></div>
       <h2 id="settings-title">Bring your intelligence.</h2>
-      <p>Connect your OpenRouter account to start chatting. Your key stays in this tab's memory and is sent only to OpenRouter. Refreshing clears it.</p>
+      <p>Connect your OpenRouter account once. JARVIS can remember the key and your conversation on this browser so you can return where you left off.</p>
       <label for="api-key">OpenRouter API key</label>
       <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-or-…" required>
+      <label class="remember-option"><input id="remember-device" type="checkbox" checked> <span><strong>Remember on this device</strong><small>Saved only in this browser. Turn this off on a shared computer.</small></span></label>
       <div class="key-help"><a href="https://openrouter.ai/settings/keys" target="_blank" rel="noopener noreferrer">Get an API key ↗</a><span>Free models · provider limits apply</span></div>
-      <p class="privacy-note">Messages go directly to OpenRouter and its model provider. This app does not save chats or keys. Browser dictation may use your browser's speech service. Desktop control is available in the local app.</p>
+      <p class="privacy-note">Messages go directly to OpenRouter and its model provider. JARVIS saves your key and chat history only in this browser when remembering is enabled. Browser dictation may use your browser's speech service. Desktop control is available in the local app.</p>
       <div class="dialog-actions"><button id="disconnect" type="button" class="secondary-button">Disconnect</button><button type="submit" class="primary-button">Connect JARVIS ↗</button></div>
     </form>
   </dialog>

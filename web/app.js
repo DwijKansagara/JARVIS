@@ -7,6 +7,8 @@ const MODELS = ['qwen/qwen3.8-27b:free', 'nvidia/nemotron-3.5-lightning:free', '
 const SYSTEM = 'You are JARVIS, a thoughtful personal AI assistant created and owned by Dwij Kansagara. IDENTITY RULE: if anyone asks who created, made, built, developed, or owns you, answer exactly: "I am JARVIS, created and owned by Dwij Kansagara." You may add one short sentence about your capabilities. Never identify yourself as NVIDIA Nemotron, Google, OpenAI, Anthropic, or another provider/model as JARVIS\'s creator or owner; those are underlying services, not JARVIS\'s creator. Do not claim the user created or owns you unless the user is Dwij Kansagara. Be useful, candid, and clear. Help with planning, learning, writing, and coding. This is your browser edition: you have no tools, web search, access to files, or control over the user\'s computer. Never claim to have executed actions or searched. When asked for computer control, explain that the local desktop edition is needed. Do not invent current facts. Use readable short paragraphs and simple lists.';
 let apiKey = '';
 let history = [];
+const KEY_STORAGE = 'jarvis.openrouter.apiKey';
+const HISTORY_STORAGE = 'jarvis.conversation.v1';
 let request = null;
 let readAloud = false;
 let recognition = null;
@@ -23,6 +25,26 @@ function notify(text = '') {
 
 function scrollToEnd() {
   $('conversation').scrollTop = $('conversation').scrollHeight;
+}
+
+function saveHistory() {
+  try { localStorage.setItem(HISTORY_STORAGE, JSON.stringify(history.slice(-20))); } catch { /* private browsing/storage limits: chat still works */ }
+}
+
+function restoreSavedState() {
+  try {
+    apiKey = localStorage.getItem(KEY_STORAGE) || '';
+    const saved = JSON.parse(localStorage.getItem(HISTORY_STORAGE) || '[]');
+    if (Array.isArray(saved) && saved.every((item) => item && (item.role === 'user' || item.role === 'assistant') && typeof item.content === 'string')) {
+      history = saved.slice(-20);
+      for (const item of history) {
+        const message = addMessage(item.role, item.content);
+        if (item.role === 'assistant') addCopy(message, item.content);
+      }
+    }
+  } catch { apiKey = ''; history = []; }
+  if (apiKey) $('connection-status').classList.add('connected');
+  $('status-label').textContent = apiKey ? 'Key remembered' : 'Add API key';
 }
 
 function setBusy(busy) {
@@ -65,6 +87,7 @@ function addCopy(message, text) {
 
 function openSettings() {
   $('api-key').value = '';
+  try { $('remember-device').checked = Boolean(localStorage.getItem(KEY_STORAGE)) || !apiKey; } catch { $('remember-device').checked = true; }
   if (!$('settings-dialog').open) $('settings-dialog').showModal();
   $('api-key').focus();
 }
@@ -93,6 +116,7 @@ async function sendMessage(event) {
   if (isIdentityQuestion(text)) {
     const identity = 'I am JARVIS, created and owned by Dwij Kansagara.';
     history.push({ role: 'user', content: text }, { role: 'assistant', content: identity });
+    saveHistory();
     const message = addMessage('assistant', identity);
     addCopy(message, identity);
     say(identity);
@@ -130,6 +154,7 @@ async function sendMessage(event) {
     history.push({ role: 'user', content: text }, { role: 'assistant', content: reply });
     // Bound the context sent to the provider; on-screen messages remain visible.
     while (history.length > 20 || (history.length > 2 && JSON.stringify(history).length > 60000)) history.splice(0, 2);
+    saveHistory();
     message.content.textContent = reply;
     addCopy(message, reply);
     say(reply);
@@ -166,6 +191,10 @@ $('settings-form').addEventListener('submit', (event) => {
   const key = $('api-key').value.trim();
   if (!key || /\s/.test(key)) { $('api-key').setCustomValidity('Enter a key without whitespace.'); $('api-key').reportValidity(); return; }
   apiKey = key;
+  try {
+    if ($('remember-device').checked) localStorage.setItem(KEY_STORAGE, key);
+    else localStorage.removeItem(KEY_STORAGE);
+  } catch { notify('This browser blocked persistent storage; the key will last until this tab closes.'); }
   $('api-key').value = '';
   $('settings-dialog').close();
   $('connection-status').classList.add('connected');
@@ -178,6 +207,7 @@ $('settings-dialog').addEventListener('close', () => { $('api-key').value = ''; 
 $('disconnect').addEventListener('click', () => {
   request?.abort();
   apiKey = '';
+  try { localStorage.removeItem(KEY_STORAGE); } catch { /* already unavailable */ }
   recognition?.stop();
   window.speechSynthesis?.cancel();
   $('connection-status').classList.remove('connected');
@@ -188,7 +218,7 @@ $('disconnect').addEventListener('click', () => {
 $('new-chat').addEventListener('click', () => {
   if (request) { notify('Stop the current reply before starting a new conversation.'); return; }
   recognition?.stop(); window.speechSynthesis?.cancel();
-  history = []; $('messages').replaceChildren(); $('welcome').hidden = false; $('prompt').value = ''; notify(); $('prompt').focus();
+  history = []; saveHistory(); $('messages').replaceChildren(); $('welcome').hidden = false; $('prompt').value = ''; notify(); $('prompt').focus();
 });
 document.querySelectorAll('[data-prompt]').forEach((button) => button.addEventListener('click', () => {
   $('prompt').value = button.dataset.prompt; $('prompt').focus();
@@ -223,4 +253,5 @@ if (SpeechRecognition) {
   $('mic-button').disabled = true;
   $('mic-button').title = 'Dictation is unavailable in this browser. You can type instead.';
 }
-window.addEventListener('pagehide', () => { request?.abort(); recognition?.abort(); window.speechSynthesis?.cancel(); apiKey = ''; });
+restoreSavedState();
+window.addEventListener('pagehide', () => { request?.abort(); recognition?.abort(); window.speechSynthesis?.cancel(); });

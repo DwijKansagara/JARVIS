@@ -6,7 +6,7 @@ JARVIS has a **web app** for browser chat and voice controls, plus a **Python de
 
 **[Launch JARVIS Web](https://dwij-jarvis.antideploy.com)** · **[Desktop setup guide](docs/RUN_LOCALLY.md)**
 
-The web edition lives in `web/` and connects directly to OpenRouter using your own session-only API key. It includes chat, dictation in supported browsers, read-aloud, cancellation, and mobile layout. [Web setup, features, and deployment instructions](docs/WEB_APP.md).
+The web edition lives in `web/` and connects directly to OpenRouter using your own API key. It can remember the key and conversation history on your browser when **Remember on this device** is enabled. It includes chat, dictation in supported browsers, read-aloud, cancellation, and mobile layout. [Web setup, features, and deployment instructions](docs/WEB_APP.md).
 
 To run the web app locally without installing desktop packages:
 
@@ -58,7 +58,7 @@ GitHub Actions runs dependency validation, focused static checks, and nine offli
 
 ## Validation limits
 
-A real browser-to-OpenRouter conversation and a Gemini Live audio response have been verified. Eight web browser tests run separately from the nine desktop tests. Physical microphone/playback, browser control, and system-changing desktop actions have not been tested end to end. Some desktop modules still use the deprecated `google-generativeai` SDK, which emits a warning. Passing checks does not establish that every external service or device operation will work.
+A real browser-to-OpenRouter conversation and a Gemini Live audio response have been verified. Eleven web browser tests run separately from the ten desktop tests. Physical microphone/playback, browser control, and system-changing desktop actions have not been tested end to end. Some desktop modules still use the deprecated `google-generativeai` SDK, which emits a warning. Passing checks does not establish that every external service or device operation will work.
 
 ## License and attribution
 

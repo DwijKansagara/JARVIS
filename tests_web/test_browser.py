@@ -70,9 +70,21 @@ class WebTests(unittest.TestCase):
         self.page.locator("#api-key").fill("test-key")
         self.page.get_by_role("button", name="Connect JARVIS").click()
         self.assertEqual(self.page.locator("#api-key").input_value(), "")
-        self.assertEqual(self.page.evaluate("[localStorage.length, sessionStorage.length]"), [0, 0])
+        self.assertEqual(self.page.evaluate("[localStorage.getItem('jarvis.openrouter.apiKey'), sessionStorage.length]"), ["test-key", 0])
         self.page.reload()
-        expect(self.page.locator("#status-label")).to_have_text("Add API key")
+        expect(self.page.locator("#status-label")).to_have_text("Key remembered")
+        self.page.locator("#settings-button").click()
+        self.page.locator("#disconnect").click()
+        self.assertIsNone(self.page.evaluate("localStorage.getItem('jarvis.openrouter.apiKey')"))
+
+    def test_history_persists_and_new_chat_clears_it(self):
+        self.connect()
+        self.send("Remember this")
+        expect(self.page.locator(".assistant .message-content")).to_contain_text("A real test reply")
+        self.page.reload()
+        expect(self.page.locator(".message-content").first).to_contain_text("Remember this")
+        self.page.locator("#new-chat").click()
+        self.assertEqual(self.page.evaluate("localStorage.getItem('jarvis.conversation.v1')"), "[]")
 
     def test_chat_context_safe_rendering_and_reset(self):
         self.connect()
