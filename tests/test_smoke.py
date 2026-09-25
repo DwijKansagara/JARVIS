@@ -73,6 +73,12 @@ class SmokeTests(unittest.TestCase):
         self.assertIsNotNone(configuration.output_audio_transcription)
         self.assertGreater(len(configuration.tools[0].function_declarations), 0)
 
+    def test_identity_instruction_names_creator_and_owner(self):
+        prompt = Path(main.__file__).with_name("core").joinpath("prompt.txt").read_text(encoding="utf-8-sig")
+        self.assertIn("created by Dwij Kansagara", prompt)
+        self.assertIn("who is also your owner", prompt)
+        self.assertIn("Never identify yourself as NVIDIA Nemotron", prompt)
+
     def test_first_run_ui_event_loop(self):
         with tempfile.TemporaryDirectory() as directory:
             with patch("ui.API_FILE", Path(directory) / "missing.json"):

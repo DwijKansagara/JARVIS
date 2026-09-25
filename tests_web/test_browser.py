@@ -88,6 +88,14 @@ class WebTests(unittest.TestCase):
         expect(self.page.locator("#welcome")).to_be_visible()
         expect(self.page.locator(".message")).to_have_count(0)
 
+    def test_identity_instruction_names_creator_and_owner(self):
+        self.connect()
+        self.send("Who created you and who owns you?")
+        request = self.requests[0]
+        system = request["messages"][0]["content"]
+        self.assertIn("created and owned by Dwij Kansagara", system)
+        self.assertIn("Never identify yourself as NVIDIA Nemotron", system)
+
     def test_rate_limit_preserves_retry_and_excludes_failed_context(self):
         self.connect()
         self.page.route("https://openrouter.ai/api/v1/chat/completions", lambda route: route.fulfill(status=429, json={"error": {"message": "limited"}}), times=1)
