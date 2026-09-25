@@ -1,6 +1,20 @@
 # JARVIS
 
-Python desktop voice assistant adapted from [MARK XXXIX-OR by FatihMakes](https://github.com/FatihMakes/Mark-XXXIX-OR). Original attribution and project notes are preserved in [docs/UPSTREAM.md](docs/UPSTREAM.md).
+JARVIS has a **web app** for browser chat and voice controls, plus a **Python desktop app** for local voice and computer-control features. The desktop app is adapted from [MARK XXXIX-OR by FatihMakes](https://github.com/FatihMakes/Mark-XXXIX-OR). Original attribution and project notes are preserved in [docs/UPSTREAM.md](docs/UPSTREAM.md).
+
+## Web app
+
+**[Launch JARVIS Web](https://dwij-jarvis.antideploy.com)** · **[Desktop setup guide](docs/RUN_LOCALLY.md)**
+
+The web edition lives in `web/` and connects directly to OpenRouter using your own session-only API key. It includes chat, dictation in supported browsers, read-aloud, cancellation, and mobile layout. [Web setup, features, and deployment instructions](docs/WEB_APP.md).
+
+To run the web app locally without installing desktop packages:
+
+```powershell
+py -3.12 -m http.server 8765 --bind 127.0.0.1 --directory web
+```
+
+Open **http://127.0.0.1:8765**. Desktop control stays in the local app; the web version does not expose it over the internet.
 
 ## Run locally
 
@@ -18,7 +32,7 @@ On first launch, enter your Gemini and OpenRouter API keys in the setup screen a
 
 Audio/video conversions need FFmpeg installed and available on PATH. Live AI features need working API keys, network access, and access to the configured provider models. Provider limits and model availability may vary.
 
-This is a desktop application that uses local audio and desktop control, not a web server. Hosting/deployment is not configured or enabled.
+The desktop edition uses local audio and desktop control. The separate `web/` edition is designed for Antideploy static hosting; see [the web guide](docs/WEB_APP.md).
 
 ## Checks
 
@@ -44,7 +58,7 @@ GitHub Actions runs dependency validation, focused static checks, and nine offli
 
 ## Validation limits
 
-Live Gemini/OpenRouter conversations, microphone playback, browser control, and system-changing actions have not been tested end to end. Some action modules still use the deprecated `google-generativeai` SDK, which emits a deprecation warning; migration remains future work. Passing offline checks does not establish that every external service or device operation will work.
+A real browser-to-OpenRouter conversation and a Gemini Live audio response have been verified. Eight web browser tests run separately from the nine desktop tests. Physical microphone/playback, browser control, and system-changing desktop actions have not been tested end to end. Some desktop modules still use the deprecated `google-generativeai` SDK, which emits a warning. Passing checks does not establish that every external service or device operation will work.
 
 ## License and attribution
 

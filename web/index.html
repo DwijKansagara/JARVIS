@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101517">
+  <meta name="description" content="JARVIS, your personal AI workspace. Chat, think, and speak with your assistant.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://openrouter.ai; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>JARVIS · Your personal AI workspace</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./" aria-label="JARVIS home"><span class="brand-mark">J</span><span>JARVIS<span class="brand-caption">PERSONAL INTELLIGENCE</span></span></a>
+    <button id="new-chat" class="new-chat"><span>＋</span> New conversation <span class="shortcut">↗</span></button>
+    <div class="nav-label">WORKSPACE</div>
+    <div class="nav-item active"><span>◈</span> Assistant <span class="nav-dot"></span></div>
+    <a class="nav-item" href="https://github.com/DwijKansagara/JARVIS/blob/main/docs/RUN_LOCALLY.md" target="_blank" rel="noopener noreferrer"><span>▣</span> Desktop app <span class="external">↗</span></a>
+    <div class="sidebar-note"><span class="small-orbit">◎</span><h3>One assistant.<br>Two ways to work.</h3><p>Use the web for conversation. Use the desktop app to work with your computer.</p><a href="https://github.com/DwijKansagara/JARVIS" target="_blank" rel="noopener noreferrer">Explore the project ↗</a></div>
+    <div class="sidebar-bottom"><button id="settings-button" class="nav-item"><span>⚙</span> Connection settings</button><div class="edition"><span class="green-dot"></span> WEB EDITION <span>01.0</span></div></div>
+  </aside>
+  <main>
+    <header><div class="breadcrumb">Workspace <span>/</span> <strong>Assistant</strong></div><button id="connection-status" class="status"><span class="status-dot"></span><span id="status-label">Add API key</span></button></header>
+    <div class="conversation" id="conversation">
+      <section class="welcome" id="welcome">
+        <div class="eyebrow"><span></span> YOUR SPACE TO THINK</div>
+        <div class="reactor" aria-hidden="true"><div class="reactor-inner"><span>J</span></div><i></i></div>
+        <h1>A little more possible.</h1>
+        <p>Good to see you. What are we working on today?</p>
+        <div class="suggestions">
+          <button data-prompt="Help me turn a big goal into a practical plan. Start by asking me what I want to achieve."><span class="suggestion-icon">↗</span><strong>Make a plan</strong><span>Turn an idea into a next step</span><i>↗</i></button>
+          <button data-prompt="Help me understand a difficult concept. Ask me what topic I am learning and what I already know."><span class="suggestion-icon">✧</span><strong>Figure it out</strong><span>Make something complex click</span><i>↗</i></button>
+          <button data-prompt="Help me with a coding problem. Ask me for the code, the error, and the result I expected."><span class="suggestion-icon">⌘</span><strong>Build something</strong><span>A second perspective on your code</span><i>↗</i></button>
+        </div>
+      </section>
+      <div id="messages" class="messages" role="log" aria-live="polite" aria-label="Conversation"></div>
+    </div>
+    <section class="composer-area">
+      <div id="notice" class="notice" role="status" hidden></div>
+      <form id="chat-form" class="composer">
+        <label for="prompt" class="sr-only">Message JARVIS</label>
+        <textarea id="prompt" placeholder="Ask anything. Let's work through it." rows="2" maxlength="12000"></textarea>
+        <div class="composer-toolbar"><div class="composer-options"><span class="model-label"><span class="green-dot"></span> Free model router</span><button id="speak-toggle" type="button" class="tool-button" aria-pressed="false" title="Read replies aloud">◖ <span>Read aloud</span></button></div><div class="send-controls"><button id="mic-button" type="button" class="mic-button" aria-label="Dictate a message" title="Dictate a message">♩</button><button id="stop-button" type="button" hidden>Stop</button><button id="send-button" type="submit" class="send-button" aria-label="Send message">↑</button></div></div>
+      </form>
+      <div class="composer-footer"><span>JARVIS can make mistakes. Check important details.</span><span>Enter to send · Shift + Enter for a new line</span></div>
+    </section>
+  </main>
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <form id="settings-form">
+      <div class="dialog-heading"><span class="eyebrow">YOUR CONNECTION</span><button id="close-settings" type="button" class="icon-button" aria-label="Close settings">×</button></div>
+      <h2 id="settings-title">Bring your intelligence.</h2>
+      <p>Connect your OpenRouter account to start chatting. Your key stays in this tab's memory and is sent only to OpenRouter. Refreshing clears it.</p>
+      <label for="api-key">OpenRouter API key</label>
+      <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-or-…" required>
+      <div class="key-help"><a href="https://openrouter.ai/settings/keys" target="_blank" rel="noopener noreferrer">Get an API key ↗</a><span>Free models · provider limits apply</span></div>
+      <p class="privacy-note">Messages go directly to OpenRouter and its model provider. This app does not save chats or keys. Browser dictation may use your browser's speech service. Desktop control is available in the local app.</p>
+      <div class="dialog-actions"><button id="disconnect" type="button" class="secondary-button">Disconnect</button><button type="submit" class="primary-button">Connect JARVIS ↗</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

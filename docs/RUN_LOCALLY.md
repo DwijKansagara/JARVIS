@@ -1,5 +1,7 @@
 # Run JARVIS locally on Windows
 
+This guide is for the desktop edition. For the browser edition, open **[JARVIS Web](https://dwij-jarvis.antideploy.com)** or follow the [web app guide](WEB_APP.md).
+
 Follow these steps in order. Windows is the tested platform. Use Python **3.12** (recommended) or **3.11**; this project's setup script rejects other versions.
 
 JARVIS opens a desktop window and uses your computer's microphone, speakers, and desktop. You do not need website hosting or a deployment service to run it locally. AI conversations still require an internet connection and provider API access.
