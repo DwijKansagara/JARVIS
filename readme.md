@@ -1,6 +1,15 @@
+<div align="center">
+  <img src="docs/jarvis-banner.svg" alt="JARVIS voice, chat and desktop assistant" width="100%" />
+</div>
+
 # JARVIS
 
 JARVIS has a **web app** for browser chat and voice controls, plus a **Python desktop app** for local voice and computer-control features. The desktop app is adapted from [MARK XXXIX-OR by FatihMakes](https://github.com/FatihMakes/Mark-XXXIX-OR). Original attribution and project notes are preserved in [docs/UPSTREAM.md](docs/UPSTREAM.md).
+
+| Edition | Purpose | Requirements |
+| --- | --- | --- |
+| Web | Chat, dictation and read-aloud in a browser | Current browser and an OpenRouter key |
+| Desktop | Voice, local audio and computer-control experiments | Windows, Python 3.11 or 3.12, microphone and provider keys |
 
 ## Web app
 

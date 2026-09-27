@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-labelledby="title description">
+  <title id="title">JARVIS</title>
+  <desc id="description">Voice, chat and desktop assistant project by Dwij Kansagara, adapted from MARK XXXIX-OR.</desc>
+  <rect width="1200" height="340" fill="#0d1210"/>
+  <g fill="none" stroke="#39473d" stroke-width="2">
+    <circle cx="1010" cy="170" r="104"/><circle cx="1010" cy="170" r="72"/><circle cx="1010" cy="170" r="38"/>
+    <path d="M870 170h280M1010 30v280"/>
+  </g>
+  <circle cx="1010" cy="170" r="10" fill="#d3f36b"/>
+  <rect x="70" y="66" width="16" height="208" fill="#d3f36b"/>
+  <text x="126" y="158" fill="#f2f3ea" font-family="Arial, sans-serif" font-size="94" font-weight="800" letter-spacing="8">JARVIS</text>
+  <text x="132" y="214" fill="#a9aea1" font-family="Courier New, monospace" font-size="20" font-weight="700" letter-spacing="2">VOICE / CHAT / DESKTOP AUTOMATION</text>
+  <text x="132" y="258" fill="#d3f36b" font-family="Courier New, monospace" font-size="16" font-weight="700">ATTRIBUTED ADAPTATION / DOCUMENTED SETUP</text>
+</svg>
