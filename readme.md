@@ -50,7 +50,7 @@ The desktop edition uses local audio and desktop control. The separate `web/` ed
 .venv\Scripts\python.exe -m pip check
 ```
 
-GitHub Actions runs dependency validation, focused static checks, and nine offline regression checks on Windows/Python 3.12. Tests cover first-run GUI startup, module imports, configuration, CSV/Excel reading, transcript API integration with a mock, audio queue backpressure, and Live API configuration validation. They do not record audio, call paid APIs, or perform desktop actions.
+GitHub Actions runs dependency validation, focused static checks, and ten offline regression checks on Windows/Python 3.12. Tests cover first-run GUI startup, module imports, configuration, CSV/Excel reading, transcript API integration with a mock, audio queue backpressure, and Live API configuration validation. They do not record audio, call paid APIs, or perform desktop actions.
 
 `requirements.txt` is the primary dependency list; `requirements_new.txt` is a compatibility alias. `requirements-windows.lock.txt` records the exact packages tested locally on Windows/Python 3.12. To reproduce that environment, install the lock file instead of `requirements.txt`.
 
@@ -67,7 +67,7 @@ GitHub Actions runs dependency validation, focused static checks, and nine offli
 
 ## Validation limits
 
-A real browser-to-OpenRouter conversation and a Gemini Live audio response have been verified. Eleven web browser tests run separately from the ten desktop tests. Physical microphone/playback, browser control, and system-changing desktop actions have not been tested end to end. Some desktop modules still use the deprecated `google-generativeai` SDK, which emits a warning. Passing checks does not establish that every external service or device operation will work.
+A real browser-to-OpenRouter conversation and a Gemini Live audio response have been verified. Twelve web browser tests run separately from the ten desktop tests. Physical microphone/playback, browser control, and system-changing desktop actions have not been tested end to end. Some desktop modules still use the deprecated `google-generativeai` SDK, which emits a warning. Passing checks does not establish that every external service or device operation will work.
 
 ## License and attribution
 
