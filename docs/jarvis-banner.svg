@@ -3,6 +3,7 @@
   <desc id="description">Voice, chat and desktop assistant project by Dwij Kansagara, adapted from MARK XXXIX-OR.</desc>
   <rect width="1200" height="340" fill="#0d1210"/>
   <g fill="none" stroke="#39473d" stroke-width="2">
+    <animateTransform attributeName="transform" type="rotate" from="0 1010 170" to="360 1010 170" dur="24s" repeatCount="indefinite"/>
     <circle cx="1010" cy="170" r="104"/><circle cx="1010" cy="170" r="72"/><circle cx="1010" cy="170" r="38"/>
     <path d="M870 170h280M1010 30v280"/>
   </g>

@@ -3,3 +3,22 @@
 
 @media(max-width:720px){.new-chat{display:flex;justify-content:center;font-size:0;padding:12px 0;margin:25px 0 0}.new-chat>span:first-child{font-size:23px}.new-chat .shortcut{display:none}.sidebar>.nav-item{margin-top:10px}}
 .remember-option{display:flex;align-items:flex-start;gap:10px;margin-top:17px!important;font-size:11px;line-height:1.35;cursor:pointer}.remember-option input{accent-color:var(--accent);margin-top:2px;width:15px;height:15px}.remember-option span{display:flex;flex-direction:column;gap:4px}.remember-option strong{font-weight:500;color:#dbe8d6}.remember-option small{font-size:9px;color:#879981}
+
+/* Restrained motion layer: load hierarchy, reactor state, and new messages. */
+@media(prefers-reduced-motion:no-preference){
+  .sidebar{animation:jarvisSidebarIn .45s cubic-bezier(.22,1,.36,1) both}
+  .welcome .eyebrow,.welcome h1,.welcome>p{animation:jarvisRise .5s cubic-bezier(.22,1,.36,1) both}
+  .welcome h1{animation-delay:.06s}.welcome>p{animation-delay:.12s}
+  .suggestions button{animation:jarvisRise .45s cubic-bezier(.22,1,.36,1) both;transition:transform .2s ease,background .2s,border-color .2s}
+  .suggestions button:nth-child(1){animation-delay:.16s}.suggestions button:nth-child(2){animation-delay:.22s}.suggestions button:nth-child(3){animation-delay:.28s}
+  .suggestions button:hover{transform:translateY(-3px)}
+  .reactor:before{animation:jarvisOrbit 14s linear infinite}
+  .reactor-inner{animation:jarvisBreathe 3.8s ease-in-out infinite}
+  .message{animation:jarvisMessageIn .32s cubic-bezier(.22,1,.36,1) both}
+}
+@keyframes jarvisSidebarIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
+@keyframes jarvisRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes jarvisOrbit{to{transform:rotate(360deg)}}
+@keyframes jarvisBreathe{0%,100%{box-shadow:0 0 22px #c5e7a515}50%{box-shadow:0 0 34px #c5e7a52c}}
+@keyframes jarvisMessageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
