@@ -15,7 +15,7 @@ JARVIS has a **web app** for browser chat and voice controls, plus a **Python de
 
 **[Launch JARVIS Web](https://dwij-jarvis.antideploy.com)** · **[Desktop setup guide](docs/RUN_LOCALLY.md)**
 
-The web edition lives in `web/` and connects directly to OpenRouter using your own API key. It can remember the key and conversation history on your browser when **Remember on this device** is enabled. It includes chat, dictation in supported browsers, read-aloud, cancellation, and mobile layout. [Web setup, features, and deployment instructions](docs/WEB_APP.md).
+The web edition lives in `web/` and connects directly to OpenRouter using your own API key. It can remember the key and conversation history on your browser when **Remember on this device** is enabled. It requires explicit provider consent before connecting and includes chat, dictation in supported browsers, read-aloud, cancellation, mobile layout, a persistent anonymous visit counter, and project-specific privacy, terms, storage, and refund pages. [Web setup, features, and deployment instructions](docs/WEB_APP.md).
 
 To run the web app locally without installing desktop packages:
 
