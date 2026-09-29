@@ -4,6 +4,8 @@
 
 # JARVIS
 
+<img src="https://dwij-counts.antideploy.com/badge/jarvis.svg" alt="JARVIS views and likes" width="214" />
+
 JARVIS has a **web app** for browser chat and voice controls, plus a **Python desktop app** for local voice and computer-control features. The desktop app is adapted from [MARK XXXIX-OR by FatihMakes](https://github.com/FatihMakes/Mark-XXXIX-OR). Original attribution and project notes are preserved in [docs/UPSTREAM.md](docs/UPSTREAM.md).
 
 | Edition | Purpose | Requirements |
