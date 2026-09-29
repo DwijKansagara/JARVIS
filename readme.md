@@ -4,7 +4,7 @@
 
 # JARVIS
 
-<img src="https://dwij-counts.antideploy.com/badge/jarvis.svg" alt="JARVIS views and likes" width="214" />
+<img src="https://dwij-portfolio.antideploy.com/badge/jarvis.svg" alt="JARVIS views and likes" width="214" />
 
 JARVIS has a **web app** for browser chat and voice controls, plus a **Python desktop app** for local voice and computer-control features. The desktop app is adapted from [MARK XXXIX-OR by FatihMakes](https://github.com/FatihMakes/Mark-XXXIX-OR). Original attribution and project notes are preserved in [docs/UPSTREAM.md](docs/UPSTREAM.md).
 
@@ -74,3 +74,4 @@ A real browser-to-OpenRouter conversation and a Gemini Live audio response have 
 ## License and attribution
 
 The supplied upstream README states **Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)**, for personal and non-commercial use. Preserve FatihMakes attribution and those terms. This repository contains local fixes to the supplied source; see [the upstream README](docs/UPSTREAM.md) for the original notice.
+
