@@ -7,7 +7,7 @@ charset-normalizer==3.5.1
 click==8.5.0
 colorama==0.4.6
 comtypes==1.4.17
-cryptography==50.0.1
+cryptography==50.0.2
 defusedxml==0.7.1
 distro==1.9.0
 duckduckgo-search==8.1.1
