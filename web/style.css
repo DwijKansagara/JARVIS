@@ -23,3 +23,8 @@
 @keyframes jarvisMessageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 .composer-footer nav{display:flex;gap:12px;flex-wrap:wrap}.composer-footer a{text-decoration:underline;text-underline-offset:3px}.privacy-note a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}.legal-body{display:block;height:auto;min-height:100vh;padding:48px 22px}.legal-page{width:min(760px,100%);margin:0 auto}.legal-page .brand{padding:0;margin-bottom:42px}.legal-page h1{font-size:clamp(38px,7vw,72px);margin-bottom:8px}.legal-page h2{margin-top:34px;font-size:22px}.legal-page p,.legal-page li{color:#aab8b1;line-height:1.8}.legal-page nav{display:flex;flex-wrap:wrap;gap:18px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}.legal-page a{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+
+.seo-faq{margin:34px auto 0;max-width:760px;text-align:left;border-top:1px solid var(--border);padding-top:22px}.seo-faq h2{margin:0 0 12px;font-size:18px}.seo-faq details{border-bottom:1px solid var(--border);padding:11px 0}.seo-faq summary{cursor:pointer;color:#d8e3db;font-size:11px}.seo-faq p{margin:8px 0 0;color:var(--muted);font-size:10px;line-height:1.6}
+
+.author-note { max-width: 720px; margin: 28px auto 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.author-note a { color: var(--accent); text-underline-offset: 3px; }

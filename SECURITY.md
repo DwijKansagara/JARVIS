@@ -1,6 +1,6 @@
 # Security
 
-Report suspected vulnerabilities privately to **kansagara.dwij@gmail.com**. Revoke an exposed provider key before reporting it.
+Report suspected vulnerabilities privately to **work.dwijkansagara@gmail.com**. Revoke an exposed provider key before reporting it.
 
 The web edition is static and has no project backend or account system. A user-provided OpenRouter key remains in page memory only and is never written to local storage or session storage. Prompts go directly to OpenRouter after explicit consent. Model output is inserted with `textContent`, so provider text cannot create HTML. Conversation history is functional local storage and can be cleared with **New conversation** or browser site-data controls.
 

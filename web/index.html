@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#101517">
   <meta name="description" content="JARVIS, your personal AI workspace. Chat, think, and speak with your assistant.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://openrouter.ai https://dwij-signal.vercel.app; script-src 'self' https://dwij-signal.vercel.app; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
-  <title>JARVIS · Your personal AI workspace</title>
+  <meta name="author" content="Dwij Kansagara">
+<link rel="canonical" href="https://dwij-jarvis.antideploy.com/">
+<title>JARVIS · Your personal AI workspace</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css?v=20260925-3">
   <script src="app.js?v=20261008-1" defer></script>
   <script src="https://dwij-signal.vercel.app/engagement-widget.js?v=20261008-1" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is the OpenRouter API key stored?","acceptedAnswer":{"@type":"Answer","text":"The API key remains in page memory and is cleared when the tab reloads, closes or disconnects."}},{"@type":"Question","name":"Can JARVIS control this computer from the web?","acceptedAnswer":{"@type":"Answer","text":"No. The browser edition provides conversation only. Local computer-control features require the separately installed desktop edition."}},{"@type":"Question","name":"Does JARVIS guarantee accurate answers?","acceptedAnswer":{"@type":"Answer","text":"No. Model responses can be inaccurate and important information should be verified."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dwij-jarvis.antideploy.com/"}]}</script>
 </head>
 <body>
   <aside class="sidebar">
@@ -29,13 +34,15 @@
       <section class="welcome" id="welcome">
         <div class="eyebrow"><span></span> YOUR SPACE TO THINK</div>
         <div class="reactor" aria-hidden="true"><div class="reactor-inner"><span>J</span></div><i></i></div>
-        <h1>A little more possible.</h1>
-        <p>Good to see you. What are we working on today?</p>
+        <h1>Plan, learn, write and code with JARVIS.</h1>
+        <p>Connect your own OpenRouter key for this tab, then work through a question with the browser edition.</p>
         <div class="suggestions">
           <button data-prompt="Help me turn a big goal into a practical plan. Start by asking me what I want to achieve."><span class="suggestion-icon">↗</span><strong>Make a plan</strong><span>Turn an idea into a next step</span><i>↗</i></button>
           <button data-prompt="Help me understand a difficult concept. Ask me what topic I am learning and what I already know."><span class="suggestion-icon">✧</span><strong>Figure it out</strong><span>Make something complex click</span><i>↗</i></button>
           <button data-prompt="Help me with a coding problem. Ask me for the code, the error, and the result I expected."><span class="suggestion-icon">⌘</span><strong>Build something</strong><span>A second perspective on your code</span><i>↗</i></button>
         </div>
+        <p class="author-note">Built by <a href="https://about-me.antideploy.com/">Dwij Kansagara</a>, a Class 10 student developer in Rajkot, as a browser companion to the open-source desktop project.</p>
+        <section class="seo-faq" aria-labelledby="seo-faq-title"><h2 id="seo-faq-title">JARVIS web FAQ</h2><details><summary>Where is the API key stored?</summary><p>It remains in page memory and is cleared when the tab reloads, closes or disconnects.</p></details><details><summary>Can this website control my computer?</summary><p>No. The browser edition provides conversation only. Computer-control features require the separately installed desktop edition.</p></details><details><summary>Are answers guaranteed to be accurate?</summary><p>No. Model responses can be inaccurate, so verify important information.</p></details></section>
       </section>
       <div id="messages" class="messages" role="log" aria-live="polite" aria-label="Conversation"></div>
       <dwij-engagement site="jarvis"></dwij-engagement>

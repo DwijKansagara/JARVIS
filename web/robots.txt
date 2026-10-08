@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dwij-jarvis.antideploy.com/sitemap.xml
