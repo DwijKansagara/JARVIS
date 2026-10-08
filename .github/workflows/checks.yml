@@ -13,6 +13,12 @@ jobs:
       - run: python -m pip install playwright
       - run: python -m playwright install --with-deps chromium
       - run: node --check web/app.js
+      - name: Ensure browser API keys are never persisted
+        run: '! grep -R "localStorage.*apiKey\|sessionStorage.*apiKey" web'
+      - name: Reject source maps and committed credential signatures
+        run: |
+          test -z "$(find web -type f -name '*.map' -print -quit)"
+          ! git grep -IEn "(BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|ghp_[A-Za-z0-9]{36}|sk-or-v1-[A-Za-z0-9_-]{20,})"
       - run: python -m unittest discover -s tests_web -v
   windows:
     runs-on: windows-latest
@@ -22,8 +28,9 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
-      - run: python -m pip install -r requirements.txt ruff
+      - run: python -m pip install -r requirements.txt ruff pip-audit
       - run: python -m pip check
+      - run: python -m pip_audit -r requirements.txt
       - run: ruff check --select E9,F63,F7,F82 .
       - run: python -m unittest discover -s tests -v
         env:

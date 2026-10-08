@@ -58,6 +58,7 @@ class WebTests(unittest.TestCase):
     def connect(self):
         self.page.locator("#connection-status").click()
         self.page.locator("#api-key").fill("test-key-not-a-real-secret")
+        self.page.locator("#provider-consent").check()
         self.page.get_by_role("button", name="Connect JARVIS").click()
 
     def send(self, text="Hello JARVIS"):
@@ -68,13 +69,14 @@ class WebTests(unittest.TestCase):
         self.send()
         expect(self.page.locator("#settings-dialog")).to_be_visible()
         self.page.locator("#api-key").fill("test-key")
+        self.page.locator("#provider-consent").check()
         self.page.get_by_role("button", name="Connect JARVIS").click()
         self.assertEqual(self.page.locator("#api-key").input_value(), "")
-        self.assertEqual(self.page.evaluate("[localStorage.getItem('jarvis.openrouter.apiKey'), sessionStorage.length]"), ["test-key", 0])
+        self.assertEqual(self.page.evaluate("[localStorage.getItem('jarvis.openrouter.apiKey'), sessionStorage.length]"), [None, 0])
         self.page.reload()
-        expect(self.page.locator("#status-label")).to_have_text("Key remembered")
-        self.page.locator("#settings-button").click()
-        self.page.locator("#disconnect").click()
+        expect(self.page.locator("#status-label")).to_have_text("Add API key")
+        self.send()
+        expect(self.page.locator("#settings-dialog")).to_be_visible()
         self.assertIsNone(self.page.evaluate("localStorage.getItem('jarvis.openrouter.apiKey')"))
 
     def test_history_persists_and_new_chat_clears_it(self):
@@ -108,7 +110,7 @@ class WebTests(unittest.TestCase):
 
     def test_assets_are_versioned_for_browser_cache_refresh(self):
         html = self.page.content()
-        self.assertIn("app.js?v=20260925-3", html)
+        self.assertIn("app.js?v=20261008-1", html)
         self.assertIn("style.css?v=20260925-3", html)
 
     def test_identity_instruction_is_present_for_other_prompts(self):

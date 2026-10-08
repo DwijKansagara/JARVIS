@@ -7,7 +7,6 @@ const MODELS = ['qwen/qwen3.8-27b:free', 'nvidia/nemotron-3.5-lightning:free', '
 const SYSTEM = 'You are JARVIS, a thoughtful personal AI assistant created and owned by Dwij Kansagara. IDENTITY RULE: if anyone asks who created, made, built, developed, or owns you, answer exactly: "I am JARVIS, created and owned by Dwij Kansagara." You may add one short sentence about your capabilities. Never identify yourself as NVIDIA Nemotron, Google, OpenAI, Anthropic, or another provider/model as JARVIS\'s creator or owner; those are underlying services, not JARVIS\'s creator. Do not claim the user created or owns you unless the user is Dwij Kansagara. Be useful, candid, and clear. Help with planning, learning, writing, and coding. This is your browser edition: you have no tools, web search, access to files, or control over the user\'s computer. Never claim to have executed actions or searched. When asked for computer control, explain that the local desktop edition is needed. Do not invent current facts. Use readable short paragraphs and simple lists.';
 let apiKey = '';
 let history = [];
-const KEY_STORAGE = 'jarvis.openrouter.apiKey';
 const HISTORY_STORAGE = 'jarvis.conversation.v1';
 let request = null;
 let readAloud = false;
@@ -33,7 +32,6 @@ function saveHistory() {
 
 function restoreSavedState() {
   try {
-    apiKey = localStorage.getItem(KEY_STORAGE) || '';
     const saved = JSON.parse(localStorage.getItem(HISTORY_STORAGE) || '[]');
     if (Array.isArray(saved) && saved.every((item) => item && (item.role === 'user' || item.role === 'assistant') && typeof item.content === 'string')) {
       history = saved.slice(-20);
@@ -42,9 +40,8 @@ function restoreSavedState() {
         if (item.role === 'assistant') addCopy(message, item.content);
       }
     }
-  } catch { apiKey = ''; history = []; }
-  if (apiKey) $('connection-status').classList.add('connected');
-  $('status-label').textContent = apiKey ? 'Key remembered' : 'Add API key';
+  } catch { history = []; }
+  $('status-label').textContent = 'Add API key';
 }
 
 function setBusy(busy) {
@@ -87,7 +84,6 @@ function addCopy(message, text) {
 
 function openSettings() {
   $('api-key').value = '';
-  try { $('remember-device').checked = Boolean(localStorage.getItem(KEY_STORAGE)) || !apiKey; } catch { $('remember-device').checked = true; }
   if (!$('settings-dialog').open) $('settings-dialog').showModal();
   $('api-key').focus();
 }
@@ -191,10 +187,6 @@ $('settings-form').addEventListener('submit', (event) => {
   const key = $('api-key').value.trim();
   if (!key || /\s/.test(key)) { $('api-key').setCustomValidity('Enter a key without whitespace.'); $('api-key').reportValidity(); return; }
   apiKey = key;
-  try {
-    if ($('remember-device').checked) localStorage.setItem(KEY_STORAGE, key);
-    else localStorage.removeItem(KEY_STORAGE);
-  } catch { notify('This browser blocked persistent storage; the key will last until this tab closes.'); }
   $('api-key').value = '';
   $('settings-dialog').close();
   $('connection-status').classList.add('connected');
@@ -207,7 +199,6 @@ $('settings-dialog').addEventListener('close', () => { $('api-key').value = ''; 
 $('disconnect').addEventListener('click', () => {
   request?.abort();
   apiKey = '';
-  try { localStorage.removeItem(KEY_STORAGE); } catch { /* already unavailable */ }
   recognition?.stop();
   window.speechSynthesis?.cancel();
   $('connection-status').classList.remove('connected');

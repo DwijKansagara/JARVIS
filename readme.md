@@ -4,7 +4,7 @@
 
 # JARVIS
 
-<img src="https://dwij-portfolio.antideploy.com/badge/jarvis.svg" alt="JARVIS views and likes" width="214" />
+<img src="https://dwij-signal.vercel.app/badge/jarvis.svg" alt="JARVIS views and likes" width="214" />
 
 JARVIS has a **web app** for browser chat and voice controls, plus a **Python desktop app** for local voice and computer-control features. The desktop app is adapted from [MARK XXXIX-OR by FatihMakes](https://github.com/FatihMakes/Mark-XXXIX-OR). Original attribution and project notes are preserved in [docs/UPSTREAM.md](docs/UPSTREAM.md).
 
@@ -17,7 +17,7 @@ JARVIS has a **web app** for browser chat and voice controls, plus a **Python de
 
 **[Launch JARVIS Web](https://dwij-jarvis.antideploy.com)** · **[Desktop setup guide](docs/RUN_LOCALLY.md)**
 
-The web edition lives in `web/` and connects directly to OpenRouter using your own API key. It can remember the key and conversation history on your browser when **Remember on this device** is enabled. It requires explicit provider consent before connecting and includes chat, dictation in supported browsers, read-aloud, cancellation, mobile layout, a persistent anonymous visit counter, and project-specific privacy, terms, storage, and refund pages. [Web setup, features, and deployment instructions](docs/WEB_APP.md).
+The web edition lives in `web/` and connects directly to OpenRouter using your own API key. The key remains in page memory and is cleared on reload or disconnect; conversation history stays in your browser until you clear it. It requires explicit provider consent before connecting and includes chat, dictation in supported browsers, read-aloud, cancellation, mobile layout, an aggregate view counter and site-specific appreciation progress, and project-specific privacy, terms, storage, and refund pages. [Web setup, features, and deployment instructions](docs/WEB_APP.md).
 
 To run the web app locally without installing desktop packages:
 

@@ -27,4 +27,4 @@ pandas
 openpyxl
 xlrd
 pydub
-setuptools<81
+setuptools>=83.0.0

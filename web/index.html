@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101517">
   <meta name="description" content="JARVIS, your personal AI workspace. Chat, think, and speak with your assistant.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://openrouter.ai https://dwij-portfolio.antideploy.com; script-src 'self' https://dwij-portfolio.antideploy.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://openrouter.ai https://dwij-signal.vercel.app; script-src 'self' https://dwij-signal.vercel.app; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
   <title>JARVIS · Your personal AI workspace</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css?v=20260925-3">
-  <script src="app.js?v=20260925-3" defer></script>
-  <script src="https://dwij-portfolio.antideploy.com/engagement-widget.js?v=20260929-4" defer></script>
+  <script src="app.js?v=20261008-1" defer></script>
+  <script src="https://dwij-signal.vercel.app/engagement-widget.js?v=20261008-1" defer></script>
 </head>
 <body>
   <aside class="sidebar">
@@ -54,12 +54,11 @@
     <form id="settings-form">
       <div class="dialog-heading"><span class="eyebrow">YOUR CONNECTION</span><button id="close-settings" type="button" class="icon-button" aria-label="Close settings">×</button></div>
       <h2 id="settings-title">Bring your intelligence.</h2>
-      <p>Connect your OpenRouter account once. JARVIS can remember the key and your conversation on this browser so you can return where you left off.</p>
+      <p>Connect your OpenRouter account for this tab. The key stays only in memory and is cleared when the page closes or reloads.</p>
       <label for="api-key">OpenRouter API key</label>
       <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-or-…" required>
-      <label class="remember-option"><input id="remember-device" type="checkbox" checked> <span><strong>Remember on this device</strong><small>Saved only in this browser. Turn this off on a shared computer.</small></span></label>
       <div class="key-help"><a href="https://openrouter.ai/settings/keys" target="_blank" rel="noopener noreferrer">Get an API key ↗</a><span>Free models · provider limits apply</span></div>
-      <p class="privacy-note">Messages go directly to OpenRouter and its model provider. JARVIS saves your key and chat history only in this browser when remembering is enabled. Browser dictation may use your browser's speech service. Read the <a href="privacy.html">Privacy Policy</a>.</p>
+      <p class="privacy-note">Messages go directly to OpenRouter and its model provider. The API key remains in page memory only; conversation history is stored in this browser until you start a new chat or clear site data. Browser dictation may use your browser's speech service. Read the <a href="privacy.html">Privacy Policy</a>.</p>
       <label class="remember-option"><input id="provider-consent" type="checkbox" required> <span><strong>I understand where messages are sent</strong><small>I consent to sending prompts to OpenRouter and the selected model provider.</small></span></label>
       <div class="dialog-actions"><button id="disconnect" type="button" class="secondary-button">Disconnect</button><button type="submit" class="primary-button">Connect JARVIS ↗</button></div>
     </form>
