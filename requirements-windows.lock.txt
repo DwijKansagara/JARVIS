@@ -40,7 +40,7 @@ pdfplumber==0.11.10
 pillow==12.3.0
 playwright==1.63.0
 primp==2.0.1
-proto-plus==1.28.2
+proto-plus==1.29.0
 protobuf==5.29.6
 psutil==7.2.2
 pyasn1==0.6.4
