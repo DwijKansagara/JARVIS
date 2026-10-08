@@ -10,6 +10,8 @@ JARVIS has a **web app** for browser chat and voice controls, plus a **Python de
 
 **[Launch the web edition](https://dwij-jarvis.antideploy.com)** · **[Install the desktop edition](docs/RUN_LOCALLY.md)** · **[Report a problem](https://github.com/DwijKansagara/JARVIS/issues/new/choose)**
 
+![JARVIS live preview](docs/social-preview.png)
+
 [![JARVIS checks](https://github.com/DwijKansagara/JARVIS/actions/workflows/checks.yml/badge.svg)](https://github.com/DwijKansagara/JARVIS/actions/workflows/checks.yml)
 
 | Edition | Purpose | Requirements |
