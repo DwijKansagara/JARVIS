@@ -8,6 +8,10 @@
 
 JARVIS has a **web app** for browser chat and voice controls, plus a **Python desktop app** for local voice and computer-control features. The desktop app is adapted from [MARK XXXIX-OR by FatihMakes](https://github.com/FatihMakes/Mark-XXXIX-OR). Original attribution and project notes are preserved in [docs/UPSTREAM.md](docs/UPSTREAM.md).
 
+**[Launch the web edition](https://dwij-jarvis.antideploy.com)** · **[Install the desktop edition](docs/RUN_LOCALLY.md)** · **[Report a problem](https://github.com/DwijKansagara/JARVIS/issues/new/choose)**
+
+[![JARVIS checks](https://github.com/DwijKansagara/JARVIS/actions/workflows/checks.yml/badge.svg)](https://github.com/DwijKansagara/JARVIS/actions/workflows/checks.yml)
+
 | Edition | Purpose | Requirements |
 | --- | --- | --- |
 | Web | Chat, dictation and read-aloud in a browser | Current browser and an OpenRouter key |
@@ -74,4 +78,8 @@ A real browser-to-OpenRouter conversation and a Gemini Live audio response have 
 ## License and attribution
 
 The supplied upstream README states **Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)**, for personal and non-commercial use. Preserve FatihMakes attribution and those terms. This repository contains local fixes to the supplied source; see [the upstream README](docs/UPSTREAM.md) for the original notice.
+
+## Feedback and contributions
+
+Bug reports should identify the web or desktop edition, operating system, Python or browser version, and exact reproduction steps. Never include API keys, private prompts or personal files. Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing changes. If JARVIS helps your own experiments, a GitHub star helps other developers find it.
 
